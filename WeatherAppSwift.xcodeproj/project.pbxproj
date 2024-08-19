@@ -94,9 +94,8 @@
 		F6F44E502C7401E7005FEBD2 /* WeatherAppSwift */ = {
 			isa = PBXGroup;
 			children = (
-				F6F44E512C7401E7005FEBD2 /* WeatherAppSwiftApp.swift */,
-				F6F44E532C7401E7005FEBD2 /* ContentView.swift */,
 				F6F44E552C7401E8005FEBD2 /* Assets.xcassets */,
+				F6F44E7B2C740365005FEBD2 /* App */,
 				F6F44E572C7401E8005FEBD2 /* Preview Content */,
 			);
 			path = WeatherAppSwift;
@@ -125,6 +124,15 @@
 				F6F44E6E2C7401E8005FEBD2 /* WeatherAppSwiftUITestsLaunchTests.swift */,
 			);
 			path = WeatherAppSwiftUITests;
+			sourceTree = "<group>";
+		};
+		F6F44E7B2C740365005FEBD2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F6F44E512C7401E7005FEBD2 /* WeatherAppSwiftApp.swift */,
+				F6F44E532C7401E7005FEBD2 /* ContentView.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
