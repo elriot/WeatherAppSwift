@@ -26,6 +26,44 @@ struct CurrentWeather: Decodable{
     let id: Int
     let name: String
     let cod: Int
+    
+    static func sampleData() -> CurrentWeather {
+        return CurrentWeather(
+            coord: Coordinates(lon: -123.1216, lat: 49.2827),
+            weather: [
+                CurrentWeatherWeather(id: 803, main: "Clouds", description: "broken clouds", icon: "04d")
+            ],
+            base: "stations",
+            main: CurrentWeatherMain(
+                temp: 21.3,
+                feels_like: 21.18,
+                temp_min: 19.83,
+                temp_max: 22.77,
+                pressure: 1012,
+                humidity: 65,
+                sea_level: 1012,
+                grnd_level: 1000
+            ),
+            visibility: 10000,
+            wind: CurrentWeatherWind(
+                speed: 4.63,
+                deg: 140
+            ),
+            clouds: CurrentWeatherClouds(all: 75),
+            dt: 1722203267,
+            sys: CurrentWeatherSys(
+                type: 2,
+                id: 2011597,
+                country: "CA",
+                sunrise: 1722170386,
+                sunset: 1722225477
+            ),
+            timezone: -25200,
+            id: 6173331,
+            name: "Vancouver",
+            cod: 200
+        )
+    }
 }
 
 struct Coordinates: Decodable {
