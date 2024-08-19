@@ -18,7 +18,7 @@ class Api {
     }
     
     let seattle: String = "CurrentWeather"
-    let vancouver: String = "CurrentWeatherInVancouver"//"Vancouver"
+    let vancouver: String = "CurrentWeatherVancouver"//"Vancouver"
 
     
     // sample data
