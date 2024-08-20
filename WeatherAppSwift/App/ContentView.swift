@@ -8,12 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var vm: WeatherVM = WeatherVM()
+    
     var body: some View {
-        VStack(spacing: 20) {
-            TopWeatherView()
-            DailyWeatherView()
-            WeeklyForecastView()
+        //        VStack(spacing: 20) {
+        TabView {
+            WeatherView()
+                .tabItem {
+                    Label("Weather", systemImage: "cloud.sun.fill")
+                }
+            
+            LocationView()
+                .tabItem {
+                    Label("Location", systemImage: "magnifyingglass")
+                }
         }
     }
 }
