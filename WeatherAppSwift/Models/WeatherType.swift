@@ -34,20 +34,20 @@ enum WeatherType {
         }
     }
     
-    var icon: UIImage? {
+    var icon: Image? {
         switch self {
         case .sunny, .clear:
-            return UIImage(systemName: "sun.max.fill")
+            return Image(systemName: "sun.max.fill")
         case .cloudy:
-            return UIImage(systemName: "cloud.fill")
+            return Image(systemName: "cloud.fill")
         case .rainy:
-            return UIImage(systemName: "cloud.rain.fill")
+            return Image(systemName: "cloud.rain.fill")
         case .windy:
-            return UIImage(systemName: "wind")
+            return Image(systemName: "wind")
         case .snowy:
-            return UIImage(systemName: "snowflake")
+            return Image(systemName: "snowflake")
         case .foggy, .misty:
-            return UIImage(systemName: "cloud.fog.fill")
+            return Image(systemName: "cloud.fog.fill")
         case .none:
             return nil
         }
@@ -70,16 +70,16 @@ enum WeatherType {
         }
     }
     
-    var tint: UIColor?{
+    var tint: Color?{
         switch self {
         case .sunny, .clear:
-            return .systemYellow
+            return .yellow
         case .cloudy, .foggy, .misty:
-            return .systemGray2
+            return .gray
         case .rainy:
-            return .systemCyan
+            return .cyan
         case .windy:
-            return .systemTeal
+            return .teal
         case .snowy:
             return .white
         case .none:
