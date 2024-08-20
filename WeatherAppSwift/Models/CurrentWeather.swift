@@ -64,6 +64,7 @@ struct CurrentWeather: Decodable{
             cod: 200
         )
     }
+    
 }
 
 struct Coordinates: Decodable {

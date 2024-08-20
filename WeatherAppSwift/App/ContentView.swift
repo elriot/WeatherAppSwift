@@ -11,9 +11,8 @@ struct ContentView: View {
     @StateObject var vm: WeatherVM = WeatherVM()
     var body: some View {
         VStack {
-            TopWeatherView(weather: $vm.currentWeather)
+            TopWeatherView()
         }
-        .padding()
     }
 }
 
