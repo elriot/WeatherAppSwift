@@ -7,38 +7,36 @@
 
 import SwiftUI
 struct CarouselRow: View {
-    let items: [String] // 예를 들어 이미지 이름을 리스트로 가정
+    let weekly: WeeklyForecast
+    let items: [WeeklyForecastList]
+    let types: [WeatherType]
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing:2) {
-                ForEach(items, id: \.self) { item in
-                    VStack(spacing: 14) {
-                        Text("9:00 AM")
-//                            .font(.)
-                        Image(systemName: "cloud.fill")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundColor(.gray)
-                            .frame(width: 40, height: 40)
-                            
-                        Text("27°")
-                    }
-                    .frame(width: 70, height: 100)
-                    .padding()
-                    .border(.gray)
-//                    .background(Color.gray.opacity(0.1))
-//                    .cornerRadius(15)
+                ForEach(0..<min(8, items.count), id: \.self) { index in
+                    let image = types[index].icon ?? Image(systemName: "sun.fill")
+                    let hour = items[index].dt?.toHour() ?? ":"
+                    let temp = Int(items[index].main?.temp ?? 0)
+                    let tint = types[index].tint ?? Color.gray
+                    DailyCarouselRowItemView(icon: image, hour: hour, temp: temp, tint: tint)
                 }
+                
             }
             .padding(.horizontal, 20)
         }
-        .frame(height: 120)
+        .frame(height: 150)
+        .background(.gray.opacity(0.09))
     }
 }
 struct DailyCarouselRow: View {
+    @StateObject var vm: WeatherVM = WeatherVM()
     var body: some View {
-        CarouselRow(items: ["star", "moon", "sun.max", "cloud", "snowflake", "tornado"])
+        if let weekly = vm.weeklyForecast, let weeklyList = vm.weeklyForecastList, let types = vm.dailyForecastType {
+            CarouselRow(weekly: weekly, items:weeklyList, types: types)
+        } else {
+            Text("Loading...")
+        }
     }
 }
 

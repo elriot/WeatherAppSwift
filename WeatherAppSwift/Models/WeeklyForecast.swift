@@ -13,6 +13,78 @@ struct WeeklyForecast: Decodable {
     let cnt: Int // list.count
     let list: [WeeklyForecastList]?
     let city: WeeklyForecastCity?
+    
+    func createSampleWeeklyForecast() -> WeeklyForecast {
+        // City 정보
+        let city = WeeklyForecastCity(
+            id: 6173331,
+            name: "Vancouver",
+            coord: Coordinates(lon: 49.2817, lat: -123.1206),
+            country: "CA",
+            population: 1837969,
+            timezone: -25200,
+            sunrise: 1722256866,
+            sunset: 1722311794
+        )
+        
+        // 리스트 정보
+        let list: [WeeklyForecastList] = [
+            WeeklyForecastList(
+                dt: 1722297600,
+                main: WeeklyForecastListMain(
+                    temp: 17.31,
+                    feelsLike: 17.42,
+                    tempMin: 15.82,
+                    tempMax: 17.31,
+                    pressure: 1012,
+                    seaLevel: 1012,
+                    groundLevel: 1000,
+                    humidity: 89,
+                    tempKf: 1.49
+                ),
+                weather: [
+                    WeeklyForecastListWeather(id: 500, main: "Rain", description: "light rain", icon: "10d")
+                ],
+                clouds: WeeklyForecastListClouds(all: 100),
+                wind: WeeklyForecastListWind(speed: 3.03, deg: 106, gust: 5.29),
+                visibility: 10000,
+                pop: 1,
+                dt_txt: "2024-07-30 00:00:00"
+            ),
+            WeeklyForecastList(
+                dt: 1722308400,
+                main: WeeklyForecastListMain(
+                    temp: 16.84,
+                    feelsLike: 16.98,
+                    tempMin: 15.9,
+                    tempMax: 16.84,
+                    pressure: 1012,
+                    seaLevel: 1012,
+                    groundLevel: 1000,
+                    humidity: 92,
+                    tempKf: 0.94
+                ),
+                weather: [
+                    WeeklyForecastListWeather(id: 500, main: "Rain", description: "light rain", icon: "10d")
+                ],
+                clouds: WeeklyForecastListClouds(all: 100),
+                wind: WeeklyForecastListWind(speed: 3.13, deg: 104, gust: 5.22),
+                visibility: 10000,
+                pop: 0.9,
+                dt_txt: "2024-07-30 03:00:00"
+            )
+        ]
+        
+        let weeklyForecast = WeeklyForecast(
+            cod: "200",
+            message: 0,
+            cnt: list.count,
+            list: list,
+            city: city
+        )
+        
+        return weeklyForecast
+    }
 }
 
 struct WeeklyForecastList: Decodable {
