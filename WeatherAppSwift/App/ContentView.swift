@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var vm: WeatherVM = WeatherVM()
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
             TopWeatherView()
             DailyWeatherView()
             WeeklyForecastView()

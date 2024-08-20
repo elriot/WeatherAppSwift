@@ -39,7 +39,9 @@ struct WeeklyForecastDetailView: View {
             HStack(spacing: 10){
                 Text("\(Int(low))°")
                     .foregroundStyle(.secondary)
-                Slider(value: $value, in: Double(low)...Double(high))
+//                Slider(value: $value, in: Double(low)...Double(high))
+                CustomSlider(value: $value, range: low...high)
+                    .frame(height: 40, alignment: .center)
                 Text("\(Int(high))°")
             }
         }
