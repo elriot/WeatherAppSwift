@@ -19,6 +19,7 @@
 		F63931E82C740B1700409961 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63931E52C740B1700409961 /* Api.swift */; };
 		F63931EB2C740C9500409961 /* TopWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63931EA2C740C9500409961 /* TopWeatherView.swift */; };
 		F69E091C2C7455FD009C6585 /* DailyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69E091B2C7455FD009C6585 /* DailyWeatherView.swift */; };
+		F69E091E2C7459CB009C6585 /* DailyCarouselRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69E091D2C7459CB009C6585 /* DailyCarouselRow.swift */; };
 		F6F44E522C7401E7005FEBD2 /* WeatherAppSwiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F44E512C7401E7005FEBD2 /* WeatherAppSwiftApp.swift */; };
 		F6F44E542C7401E7005FEBD2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F44E532C7401E7005FEBD2 /* ContentView.swift */; };
 		F6F44E562C7401E8005FEBD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6F44E552C7401E8005FEBD2 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		F63931E52C740B1700409961 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		F63931EA2C740C9500409961 /* TopWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopWeatherView.swift; sourceTree = "<group>"; };
 		F69E091B2C7455FD009C6585 /* DailyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherView.swift; sourceTree = "<group>"; };
+		F69E091D2C7459CB009C6585 /* DailyCarouselRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCarouselRow.swift; sourceTree = "<group>"; };
 		F6F44E4E2C7401E7005FEBD2 /* WeatherAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6F44E512C7401E7005FEBD2 /* WeatherAppSwiftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppSwiftApp.swift; sourceTree = "<group>"; };
 		F6F44E532C7401E7005FEBD2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				F69E091B2C7455FD009C6585 /* DailyWeatherView.swift */,
+				F69E091D2C7459CB009C6585 /* DailyCarouselRow.swift */,
 			);
 			path = MiddleView;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				F63931E82C740B1700409961 /* Api.swift in Sources */,
 				F63931E02C740AC300409961 /* DailyForecast.swift in Sources */,
 				F63931E12C740AC300409961 /* SearchLocation.swift in Sources */,
+				F69E091E2C7459CB009C6585 /* DailyCarouselRow.swift in Sources */,
 				F63931DE2C740AC300409961 /* WeatherType.swift in Sources */,
 				F63931DF2C740AC300409961 /* WeeklyForecast.swift in Sources */,
 				F63931D82C740A5400409961 /* WeatherVM.swift in Sources */,

@@ -9,10 +9,10 @@ import SwiftUI
 
 struct DailyWeatherView: View {
     var body: some View {
-        Text("DailyWeatherView")
+        DailyCarouselRow()
     }
 }
 
-#Preview {
+#Preview(traits: .sizeThatFitsLayout) {
     DailyWeatherView()
 }
