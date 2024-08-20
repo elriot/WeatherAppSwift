@@ -15,7 +15,7 @@ final class WeatherVM: ObservableObject {
     @Published var dailyForecast: [DailyForecast]? = []
     @Published var dailyForecastType: [WeatherType]? = []
     @Published var weeklyForecastList: [WeeklyForecastList]? = []
-    
+
     init() {
 //        Api.shared.fetchSample(CurrentWeather.self) { [weak self] data in
 //            guard let self, let data else { return }
@@ -31,7 +31,10 @@ final class WeatherVM: ObservableObject {
 //                self.setWeeklyForecast(data)
 //            }
 //        }
-        Api.shared.fetchWeather(lat: 49.2827, lon: -123.1216) { [weak self] weather, weekly in
+        // "lat": 33.5898988, "lon": 130.4017509, fukuoka
+        // vancouver ->
+        // Api.shared.fetchWeather(lat: 49.2827, lon: -123.1216) { [weak self] weather,
+        Api.shared.fetchWeather(lat: 33.5898988, lon: 130.4017509) { [weak self] weather, weekly in
             guard let self = self, let weather, let weekly else { return }
             DispatchQueue.main.async {
                 self.setWeather(weather)
@@ -44,6 +47,7 @@ final class WeatherVM: ObservableObject {
 //            
 //        }
     }
+
     private func setWeeklyForecast(_ weekly: WeeklyForecast) {
         self.weeklyForecast = weekly
         guard let list = weekly.list else { return }

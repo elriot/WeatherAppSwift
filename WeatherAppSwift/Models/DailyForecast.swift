@@ -8,7 +8,6 @@
 import UIKit
 
 struct DailyForecast: Hashable {
-//    let img: UIImage
     let day: String
     let description: String?
     let dt_txt: String? // just for test
