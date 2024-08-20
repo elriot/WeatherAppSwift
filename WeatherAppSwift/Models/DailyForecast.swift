@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct DailyForecast {
+struct DailyForecast: Hashable {
 //    let img: UIImage
     let day: String
     let description: String?

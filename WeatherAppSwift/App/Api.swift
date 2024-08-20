@@ -22,22 +22,22 @@ class Api {
 
     
     // sample data
-    func fetchWeather(completion: @escaping (CurrentWeather?) -> Void) {
-        guard let path = Bundle.main.path(forResource: vancouver, ofType: "json") else {
-            completion(nil)
-            return
-        }
-        let url = URL(filePath: path)
-        let decoder = JSONDecoder()
-        do {
-            let data = try Data(contentsOf: url)
-            let decodeData = try decoder.decode(CurrentWeather.self, from: data)
-            completion(decodeData)
-        } catch {
-            print(error)
-            completion(nil)
-        }
-    }
+//    func fetchWeather(completion: @escaping (CurrentWeather?) -> Void) {
+//        guard let path = Bundle.main.path(forResource: vancouver, ofType: "json") else {
+//            completion(nil)
+//            return
+//        }
+//        let url = URL(filePath: path)
+//        let decoder = JSONDecoder()
+//        do {
+//            let data = try Data(contentsOf: url)
+//            let decodeData = try decoder.decode(CurrentWeather.self, from: data)
+//            completion(decodeData)
+//        } catch {
+//            print(error)
+//            completion(nil)
+//        }
+//    }
     
     private func fetch<T: Decodable>(_ type: T.Type, _ request: URLRequest, completion: @escaping (T?) -> Void) {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
