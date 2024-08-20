@@ -13,6 +13,7 @@ struct ContentView: View {
         VStack {
             TopWeatherView()
             DailyWeatherView()
+            WeeklyForecastView()
         }
     }
 }

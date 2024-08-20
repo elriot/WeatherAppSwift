@@ -22,6 +22,8 @@
 		F69E091E2C7459CB009C6585 /* DailyCarouselRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69E091D2C7459CB009C6585 /* DailyCarouselRow.swift */; };
 		F69E09202C74ED1B009C6585 /* WeeklyForecast.json in Resources */ = {isa = PBXBuildFile; fileRef = F69E091F2C74ED1B009C6585 /* WeeklyForecast.json */; };
 		F69E09222C7513FA009C6585 /* DailyCarouselRowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69E09212C7513FA009C6585 /* DailyCarouselRowItemView.swift */; };
+		F69E09262C752FED009C6585 /* WeeklyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69E09252C752FED009C6585 /* WeeklyForecastView.swift */; };
+		F69E09282C75303F009C6585 /* WeeklyForecastDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69E09272C75303F009C6585 /* WeeklyForecastDetailView.swift */; };
 		F6F44E522C7401E7005FEBD2 /* WeatherAppSwiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F44E512C7401E7005FEBD2 /* WeatherAppSwiftApp.swift */; };
 		F6F44E542C7401E7005FEBD2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F44E532C7401E7005FEBD2 /* ContentView.swift */; };
 		F6F44E562C7401E8005FEBD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6F44E552C7401E8005FEBD2 /* Assets.xcassets */; };
@@ -64,6 +66,8 @@
 		F69E091D2C7459CB009C6585 /* DailyCarouselRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCarouselRow.swift; sourceTree = "<group>"; };
 		F69E091F2C74ED1B009C6585 /* WeeklyForecast.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WeeklyForecast.json; sourceTree = "<group>"; };
 		F69E09212C7513FA009C6585 /* DailyCarouselRowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCarouselRowItemView.swift; sourceTree = "<group>"; };
+		F69E09252C752FED009C6585 /* WeeklyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyForecastView.swift; sourceTree = "<group>"; };
+		F69E09272C75303F009C6585 /* WeeklyForecastDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyForecastDetailView.swift; sourceTree = "<group>"; };
 		F6F44E4E2C7401E7005FEBD2 /* WeatherAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6F44E512C7401E7005FEBD2 /* WeatherAppSwiftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppSwiftApp.swift; sourceTree = "<group>"; };
 		F6F44E532C7401E7005FEBD2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 			children = (
 				F63931E92C740C7D00409961 /* TopView */,
 				F69E091A2C7455DA009C6585 /* MiddleView */,
+				F69E09242C752FA9009C6585 /* BottomView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -155,6 +160,15 @@
 				F69E09212C7513FA009C6585 /* DailyCarouselRowItemView.swift */,
 			);
 			path = MiddleView;
+			sourceTree = "<group>";
+		};
+		F69E09242C752FA9009C6585 /* BottomView */ = {
+			isa = PBXGroup;
+			children = (
+				F69E09252C752FED009C6585 /* WeeklyForecastView.swift */,
+				F69E09272C75303F009C6585 /* WeeklyForecastDetailView.swift */,
+			);
+			path = BottomView;
 			sourceTree = "<group>";
 		};
 		F6F44E452C7401E7005FEBD2 = {
@@ -366,6 +380,8 @@
 				F63931E72C740B1700409961 /* ApiInfo.swift in Sources */,
 				F69E09222C7513FA009C6585 /* DailyCarouselRowItemView.swift in Sources */,
 				F69E091C2C7455FD009C6585 /* DailyWeatherView.swift in Sources */,
+				F69E09282C75303F009C6585 /* WeeklyForecastDetailView.swift in Sources */,
+				F69E09262C752FED009C6585 /* WeeklyForecastView.swift in Sources */,
 				F6F44E522C7401E7005FEBD2 /* WeatherAppSwiftApp.swift in Sources */,
 				F63931E22C740AC300409961 /* CurrentWeather.swift in Sources */,
 				F63931E82C740B1700409961 /* Api.swift in Sources */,

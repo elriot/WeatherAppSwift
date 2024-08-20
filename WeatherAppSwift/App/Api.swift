@@ -245,6 +245,7 @@ class Api {
 }
 
 extension [WeeklyForecastList] {
+    
     func getDailyForecasts() -> [DailyForecast] {
         var dailyForecasts: [DailyForecast] = []
         for item in self {
@@ -260,11 +261,16 @@ extension [WeeklyForecastList] {
                 let j = dailyForecasts.count - 1
                 dailyForecasts[j].lows.append(low)
                 dailyForecasts[j].highs.append(high)
+//                dailyForecasts[j].highs.append(high)
             } else {
                 let newDay = parse(using: item)
                 dailyForecasts.append(newDay)
             }
         }
+//        for forecast in dailyForecasts {
+//            print("Date: \(forecast.day), Lows: \(forecast.lows), Highs: \(forecast.highs)")
+//        }
+//        
         return dailyForecasts
     }
     
