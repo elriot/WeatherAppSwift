@@ -17,28 +17,28 @@ final class WeatherVM: ObservableObject {
     @Published var weeklyForecastList: [WeeklyForecastList]? = []
     
     init() {
-        Api.shared.fetchSample(CurrentWeather.self) { [weak self] data in
-            guard let self, let data else { return }
-            DispatchQueue.main.async {
-                self.setWeather(data)
-//                self.setWeekly(weekly)
-//                self.setDailyForecast(data)
-            }
-        }
-        Api.shared.fetchSample(WeeklyForecast.self) { [weak self] data in
-            guard let self, let data else { return }
-            DispatchQueue.main.async {
-                self.setWeeklyForecast(data)
-            }
-        }
-//        Api.shared.fetchWeather(lat: 49.2827, lon: -123.1216) { [weak self] weather, weekly in
-//            guard let self = self, let weather, let weekly else { return }
+//        Api.shared.fetchSample(CurrentWeather.self) { [weak self] data in
+//            guard let self, let data else { return }
 //            DispatchQueue.main.async {
-//                self.setWeather(weather)
-//                self.setWeekly(weekly)
-////                self.setDailyForecast(weekly)
+//                self.setWeather(data)
+////                self.setWeekly(weekly)
+////                self.setDailyForecast(data)
 //            }
 //        }
+//        Api.shared.fetchSample(WeeklyForecast.self) { [weak self] data in
+//            guard let self, let data else { return }
+//            DispatchQueue.main.async {
+//                self.setWeeklyForecast(data)
+//            }
+//        }
+        Api.shared.fetchWeather(lat: 49.2827, lon: -123.1216) { [weak self] weather, weekly in
+            guard let self = self, let weather, let weekly else { return }
+            DispatchQueue.main.async {
+                self.setWeather(weather)
+                self.setWeeklyForecast(weekly)
+//                self.setDailyForecast(weekly)
+            }
+        }
 //        Api.shared.fetchSample(WeeklyForecast) { [weak self] weekly in
 //            guard let self, let weekly else { return }
 //            

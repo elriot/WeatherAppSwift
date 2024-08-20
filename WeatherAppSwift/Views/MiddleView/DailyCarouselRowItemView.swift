@@ -16,7 +16,7 @@ struct DailyCarouselRowItemView: View {
     var body: some View {
         VStack(spacing: 14) {
             Text(hour)
-            
+
             icon
                 .resizable()
                 .aspectRatio(contentMode: .fit)

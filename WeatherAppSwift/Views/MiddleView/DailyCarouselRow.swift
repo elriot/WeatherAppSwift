@@ -17,6 +17,7 @@ struct CarouselRow: View {
                 ForEach(0..<min(8, items.count), id: \.self) { index in
                     let image = types[index].icon ?? Image(systemName: "sun.fill")
                     let hour = items[index].dt?.toHour() ?? ":"
+//                    let hour = items[index].dt_txt ?? ":"
                     let temp = Int(items[index].main?.temp ?? 0)
                     let tint = types[index].tint ?? Color.gray
                     DailyCarouselRowItemView(icon: image, hour: hour, temp: temp, tint: tint)
