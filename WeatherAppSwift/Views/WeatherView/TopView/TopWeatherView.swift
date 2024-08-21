@@ -11,22 +11,24 @@ struct TopWeatherView: View {
     @EnvironmentObject var weatherVM: WeatherVM
     
     var body: some View {
-        HStack(spacing: 30) {
-            VStack {
-                weatherIconView(icon: weatherVM.icon, tint: weatherVM.tint)
+        if weatherVM.weather != nil {
+            HStack(spacing: 30) {
+                VStack {
+                    weatherIconView(icon: weatherVM.icon, tint: weatherVM.tint)
+                }
+    //            .border(.gray)
+                VStack {
+                    weatherInfoView
+                    temperatureView
+                    weatherDescriptionView
+                    temperatureRangeView
+                }
             }
-//            .border(.gray)
-            VStack {
-                weatherInfoView
-                temperatureView
-                weatherDescriptionView
-                temperatureRangeView(low: weatherVM.low, high: weatherVM.high)
-            }
+            .padding()
+            .background(weatherVM.tint.opacity(0.1))
+            .cornerRadius(10)
+            .frame(maxWidth: .infinity)
         }
-        .padding()
-        .background(weatherVM.tint.opacity(0.1))
-        .cornerRadius(10)
-        .frame(maxWidth: .infinity)
     }
         
     
@@ -41,28 +43,29 @@ struct TopWeatherView: View {
     }
     
     private var weatherInfoView: some View {
-        Text(weatherVM.weather.name)
-            .font(.headline)
-            .padding(.bottom, 4)
+        Text(weatherVM.weather?.name ?? "")
     }
     
     private var temperatureView: some View {
-        Text("\(Int(weatherVM.weather.main.temp))°")
+        Text("\(Int(weatherVM.weather?.main.temp ?? 0))°")
             .font(.largeTitle)
             .fontWeight(.bold)
     }
     
     private var weatherDescriptionView: some View {
-        Text(weatherVM.weather.weather.first?.description ?? "")
+        Text(weatherVM.weather?.weather.first?.description ?? "")
             .font(.subheadline)
             .padding(.bottom, 4)
     }
     
-    private func temperatureRangeView(low: Int, high: Int) -> some View {
+    private var temperatureRangeView: some View {
+
         HStack {
-            Text("Low: \(low)°")
-            Text("|")
-            Text("High: \(high)°")
+            if weatherVM.weather != nil {
+                Text("Low: \(weatherVM.low)°")
+                Text("|")
+                Text("High: \(weatherVM.high)°")
+            }
         }
         .font(.subheadline)
         .padding(.top, 4)

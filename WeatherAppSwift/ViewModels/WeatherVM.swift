@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 final class WeatherVM: ObservableObject {
-    @Published var weather: CurrentWeather = CurrentWeather.empty()
+    @Published var weather: CurrentWeather? = nil
     @Published var type: WeatherType? = nil
     @Published var weeklyForecast: WeeklyForecast? = nil
     @Published var dailyForecast: [DailyForecast]? = []
@@ -97,15 +97,17 @@ final class WeatherVM: ObservableObject {
         return list
     }
     
+    /// currentWeather low temp
     var low: Int {
-        Int(weather.main.temp_min)
+        Int(weather?.main.temp_min ?? 0)
     }
     
+    /// currentWeather high temp
     var high: Int {
-        Int(weather.main.temp_max)
+        Int(weather?.main.temp_max ?? 0)
     }
     
-    
+    /// currentWeather icon
     var icon: Image {
         if let uiImage = type?.icon {
             return uiImage
@@ -114,6 +116,7 @@ final class WeatherVM: ObservableObject {
         }
     }
     
+    /// currentWeather tint
     var tint: Color {
         return Color(type?.tint ?? Color.white)
     }
