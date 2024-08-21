@@ -31,6 +31,8 @@ final class LocationVM: ObservableObject {
     
     func updateLocation(searchResult: SearchLocation){
         manager.appendAndSave(searchResult)
+        manager.saveSelected(searchResult)
+        
         self.currentLocation = searchResult
         Api.shared.fetchWeather(lat: searchResult.lat, lon: searchResult.lon) { weather, forecast in
             guard let weather, let forecast else { return }
@@ -46,5 +48,10 @@ final class LocationVM: ObservableObject {
     func clearSavedLocations(){
         manager.clearSavedLocations()
         locations = []
+    }
+    
+    func clearSavedSelectedLocations(){
+        manager.clearSavedSelectedLocations()
+        currentLocation = nil
     }
 }

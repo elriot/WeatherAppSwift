@@ -31,6 +31,7 @@ struct LocationView: View {
             if (locationVM.locations.count > 0) {
                 Button {
                     locationVM.clearSavedLocations()
+                    locationVM.clearSavedSelectedLocations()
                 } label: {
                     Image(systemName: "trash.fill")
                     Text("Clear")

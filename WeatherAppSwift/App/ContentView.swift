@@ -12,7 +12,7 @@ struct ContentView: View {
     @StateObject var lm: LocationVM
     @State private var selectedTab: NavPath = .weather
     @State private var showWeatherTab = true
-    
+    private var manager: LocationsManager = LocationsManager.shared
     init() {
         let weatherVM = WeatherVM()
         _vm = StateObject(wrappedValue: weatherVM)
@@ -38,10 +38,11 @@ struct ContentView: View {
                 .tag(NavPath.search)
         }
         .onAppear {
-            if lm.locations.isEmpty {
-                selectedTab = .search
+            if manager.getSelectedLocation() == nil {
                 showWeatherTab = false
-//                print("selected: \(selectedTab)")
+            } else {
+                selectedTab = .search
+                showWeatherTab = true
             }
         }
     }

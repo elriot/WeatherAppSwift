@@ -100,6 +100,12 @@ class LocationsManager: ObservableObject {
     }
     
     func clearSavedLocations() {
+        locations = []
         UserDefaults.standard.removeObject(forKey: "Locations")
+    }
+    
+    func clearSavedSelectedLocations() {
+        selectedLocation = nil
+        UserDefaults.standard.removeObject(forKey: "SelectedLocation")
     }
 }
