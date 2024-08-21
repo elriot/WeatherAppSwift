@@ -12,9 +12,11 @@ final class LocationVM: ObservableObject {
     @Published var currentLocation: SearchLocation?
     
     private let weatherVM: WeatherVM
+    private let manager: LocationsManager = LocationsManager.shared
 
     init(weatherVM: WeatherVM){
         self.weatherVM = weatherVM
+        self.locations = manager.getLocations()
     }
     
     func update(text: String){
@@ -28,6 +30,7 @@ final class LocationVM: ObservableObject {
     }
     
     func updateLocation(searchResult: SearchLocation){
+        manager.appendAndSave(searchResult)
         self.currentLocation = searchResult
         Api.shared.fetchWeather(lat: searchResult.lat, lon: searchResult.lon) { weather, forecast in
             guard let weather, let forecast else { return }
@@ -35,8 +38,13 @@ final class LocationVM: ObservableObject {
                 guard let self else { return }
                 weatherVM.setWeather(weather)
                 weatherVM.setWeeklyForecast(forecast)
-
+                locations = manager.getLocations()
             }
         }
+    }
+    
+    func clearSavedLocations(){
+        manager.clearSavedLocations()
+        locations = []
     }
 }

@@ -3,4 +3,66 @@
    uuid = "DD703DEE-29DD-40BB-A5D3-71F00AF523F4"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AA8BFEB0-B39A-40F3-981F-F009BE0DF69D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherAppSwift/App/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "ContentView"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "AA8BFEB0-B39A-40F3-981F-F009BE0DF69D - f84cc8d7f1f1a086"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of WeatherAppSwift.ContentView.vm : WeatherAppSwift.WeatherVM"
+                  moduleName = "WeatherAppSwift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/soopin/Desktop/XCode/WeatherAppSwift/WeatherAppSwift/App/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "AA8BFEB0-B39A-40F3-981F-F009BE0DF69D - ae10442b3fb0e9d2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherAppSwift.ContentView.vm.getter : WeatherAppSwift.WeatherVM"
+                  moduleName = "WeatherAppSwift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/soopin/Desktop/XCode/WeatherAppSwift/WeatherAppSwift/App/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "AA8BFEB0-B39A-40F3-981F-F009BE0DF69D - 2b88c60a7655d70f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherAppSwift.ContentView.$vm.getter : SwiftUI.ObservedObject&lt;WeatherAppSwift.WeatherVM&gt;.Wrapper"
+                  moduleName = "WeatherAppSwift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/soopin/Desktop/XCode/WeatherAppSwift/WeatherAppSwift/App/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

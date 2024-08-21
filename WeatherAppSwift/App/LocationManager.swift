@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 class LocationsManager: ObservableObject {
     static let shared = LocationsManager()
     private init() {}
@@ -13,10 +14,10 @@ class LocationsManager: ObservableObject {
     private let defaults = UserDefaults.standard
     
     /// Selected location for our HomeVC
-    @Published private(set) var selectedLocation: SearchLocation?
+    @Published private var selectedLocation: SearchLocation?
     
     /// Lost of locations for our SearchVC
-    @Published private(set) var locations: [SearchLocation] = []
+    @Published private var locations: [SearchLocation] = []
     
     func getSelectedLocation() -> SearchLocation? {
         if let selectedLocation {
@@ -57,6 +58,9 @@ class LocationsManager: ObservableObject {
     }
     
     func appendAndSave(_ location : SearchLocation){
+        for item in locations {
+            if item == location { return }
+        }
         locations.append(location)
         saveLocations()
     }
@@ -93,5 +97,9 @@ class LocationsManager: ObservableObject {
         } catch {
             print(error)
         }
+    }
+    
+    func clearSavedLocations() {
+        UserDefaults.standard.removeObject(forKey: "Locations")
     }
 }

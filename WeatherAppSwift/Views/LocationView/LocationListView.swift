@@ -13,11 +13,13 @@ struct LocationListView: View {
     
     @ObservedObject var locationVM: LocationVM
     @Binding var selectedTab: NavPath
+    @Binding var showWeatherTab: Bool
     
     func actionTap(location: SearchLocation) {
         locationVM.updateLocation(searchResult: location)
         selectedTab = .weather
         clearText()
+        showWeatherTab = true
     }
     
     var body: some View {
@@ -34,5 +36,5 @@ struct LocationListView: View {
 }
 
 #Preview {
-    LocationListView(locations: [], clearText: { print("test")}, locationVM: LocationVM(weatherVM: WeatherVM()), selectedTab: .constant(NavPath.search))
+    LocationListView(locations: [], clearText: { print("test")}, locationVM: LocationVM(weatherVM: WeatherVM()), selectedTab: .constant(NavPath.search), showWeatherTab: .constant(false))
 }

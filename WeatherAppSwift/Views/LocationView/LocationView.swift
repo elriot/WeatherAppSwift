@@ -11,6 +11,7 @@ struct LocationView: View {
     @State var text: String = ""
     @State private var timer: Timer?
     @Binding var selectedTab: NavPath
+    @Binding var showWeatherTab: Bool
     
     @EnvironmentObject var locationVM: LocationVM
     
@@ -24,8 +25,18 @@ struct LocationView: View {
                 .onChange(of: text) {
                     startTimer()
                 }
-            LocationListView(locations: locationVM.locations, clearText: clearText, locationVM: locationVM, selectedTab: $selectedTab)
+            LocationListView(locations: locationVM.locations, clearText: clearText, locationVM: locationVM, selectedTab: $selectedTab, showWeatherTab: $showWeatherTab)
             Spacer()
+            
+            if (locationVM.locations.count > 0) {
+                Button {
+                    locationVM.clearSavedLocations()
+                } label: {
+                    Image(systemName: "trash.fill")
+                    Text("Clear")
+                }
+                .foregroundColor(.indigo)
+            }
         }
     }
     
@@ -41,6 +52,6 @@ struct LocationView: View {
 }
 
 #Preview {
-    LocationView(selectedTab: .constant(NavPath.search))
+    LocationView(selectedTab: .constant(NavPath.search), showWeatherTab: .constant(false))
         .environmentObject(LocationVM(weatherVM: WeatherVM()))
 }
