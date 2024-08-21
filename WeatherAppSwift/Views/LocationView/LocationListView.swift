@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct LocationListView: View {
-    let cities: [String] = ["Burnaby", "Alberta", "Busan", "Fukuoka", "Seoul"]
-
+//    let cities: [String] = ["Burnaby", "Alberta", "Busan", "Fukuoka", "Seoul"]
+    let locations: [SearchLocation]
+    
     var body: some View {
         VStack(spacing:30) {
-            ForEach(0..<cities.count, id: \.self) { index in
-                let name = cities[index]
+            ForEach(0..<locations.count, id: \.self) { index in
+                let location = locations[index]
+                let name = "\(location.name) \(location.state ?? ""), \(location.country)"
                 LocationListItemView(location: name)
             }
         }
     }
 }
 
-#Preview {
-    LocationListView()
-}
+//#Preview {
+//    LocationListView(locations: [])
+//}

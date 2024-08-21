@@ -11,7 +11,7 @@ struct LocationListItemView: View {
     let location: String
     let lm = LocationsManager.shared
     var timer = Timer()
-    var updatedString: String = ""
+    
     
     var body: some View {
         Button(location) {

@@ -19,7 +19,7 @@ struct LocationView: View {
                 .onChange(of: text) {
                     startTimer()
                 }
-            LocationListView()
+            LocationListView(locations: lm.locations)
             Spacer()
         }
     }
