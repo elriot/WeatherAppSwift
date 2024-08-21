@@ -11,7 +11,7 @@ struct LocationView: View {
     @State var text: String = ""
     @State private var timer: Timer?
     
-    @ObservedObject var locationVM: LocationVM
+    @EnvironmentObject var locationVM: LocationVM
     
     var body: some View {
         VStack {
@@ -39,5 +39,6 @@ struct LocationView: View {
 }
 
 #Preview {
-    LocationView(locationVM: LocationVM(weatherVM: WeatherVM()))
+    LocationView()
+        .environmentObject(LocationVM(weatherVM: WeatherVM()))
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TopWeatherView: View {
-    @ObservedObject var weatherVM: WeatherVM
+    @EnvironmentObject var weatherVM: WeatherVM
     
     var body: some View {
         HStack(spacing: 30) {
@@ -70,5 +70,6 @@ struct TopWeatherView: View {
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    TopWeatherView(weatherVM: WeatherVM())
+    TopWeatherView()
+        .environmentObject(WeatherVM())
 }

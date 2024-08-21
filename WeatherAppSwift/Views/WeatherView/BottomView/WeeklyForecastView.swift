@@ -29,7 +29,7 @@ struct ForecastRow: View {
 
 
 struct WeeklyForecastView: View {
-    @ObservedObject var weatherVM: WeatherVM
+    @EnvironmentObject var weatherVM: WeatherVM
     var body: some View {
         if let daily = weatherVM.dailyForecast, let types = weatherVM.dailyForecastType {
             ForecastRow(items: daily, types: types)
@@ -41,5 +41,6 @@ struct WeeklyForecastView: View {
 }
 
 #Preview {
-    WeeklyForecastView(weatherVM: WeatherVM())
+    WeeklyForecastView()
+        .environmentObject(WeatherVM())
 }

@@ -19,15 +19,17 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            WeatherView(weatherVM: vm)
+            WeatherView()
                 .tabItem {
                     Label("Weather", systemImage: "cloud.sun.fill")
                 }
+                .environmentObject(vm)
             
-            LocationView(locationVM: lm)
+            LocationView()
                 .tabItem {
                     Label("Location", systemImage: "magnifyingglass")
                 }
+                .environmentObject(lm)
         }
     }
 }
