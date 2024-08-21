@@ -29,9 +29,9 @@ struct ForecastRow: View {
 
 
 struct WeeklyForecastView: View {
-    @StateObject var vm: WeatherVM = WeatherVM()
+    @ObservedObject var weatherVM: WeatherVM
     var body: some View {
-        if let daily = vm.dailyForecast, let types = vm.dailyForecastType {
+        if let daily = weatherVM.dailyForecast, let types = weatherVM.dailyForecastType {
             ForecastRow(items: daily, types: types)
         } else {
             Text("Loading...")
@@ -41,5 +41,5 @@ struct WeeklyForecastView: View {
 }
 
 #Preview {
-    WeeklyForecastView()
+    WeeklyForecastView(weatherVM: WeatherVM())
 }

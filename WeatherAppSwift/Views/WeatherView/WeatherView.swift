@@ -13,8 +13,8 @@ struct WeatherView: View {
     var body: some View {
         VStack(spacing: 20) {
             TopWeatherView(weatherVM: weatherVM) // for nexttime
-            DailyWeatherView()
-            WeeklyForecastView()
+            DailyWeatherView(weatherVM: weatherVM)
+            WeeklyForecastView(weatherVM: weatherVM)
         }
     }
 }

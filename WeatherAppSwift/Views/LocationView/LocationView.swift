@@ -32,7 +32,6 @@ struct LocationView: View {
 //        print("start timer")
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
-            print("here")
             locationVM.update(text: self.text)
             self.timer?.invalidate() 
         }
