@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct DailyWeatherView: View {
+    @ObservedObject var weatherVM: WeatherVM
     var body: some View {
-        DailyCarouselRow()
+        DailyCarouselRow(weatherVM: weatherVM)
     }
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    DailyWeatherView()
+    TopWeatherView(weatherVM: WeatherVM())
 }
