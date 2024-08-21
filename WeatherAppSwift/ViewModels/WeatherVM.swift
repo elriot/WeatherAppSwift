@@ -15,7 +15,8 @@ final class WeatherVM: ObservableObject {
     @Published var dailyForecast: [DailyForecast]? = []
     @Published var dailyForecastType: [WeatherType]? = []
     @Published var weeklyForecastList: [WeeklyForecastList]? = []
-
+    
+    
     init() {
 //        Api.shared.fetchSample(CurrentWeather.self) { [weak self] data in
 //            guard let self, let data else { return }
@@ -48,17 +49,17 @@ final class WeatherVM: ObservableObject {
 //        }
     }
 
-    private func setWeeklyForecast(_ weekly: WeeklyForecast) {
+    func setWeeklyForecast(_ weekly: WeeklyForecast) {
         self.weeklyForecast = weekly
         guard let list = weekly.list else { return }
         weeklyForecastList = list
         self.setDailyForecast(list)
     }
-    private func setWeather(_ weather: CurrentWeather) {
+    func setWeather(_ weather: CurrentWeather) {
         self.weather = weather
         self.type = getWeatherType(from: weather)
     }
-    private func setDailyForecast(_ list: [WeeklyForecastList]) {
+    func setDailyForecast(_ list: [WeeklyForecastList]) {
         let dailyList = list.getDailyForecasts()
         dailyForecast = dailyList
         dailyForecastType = getDailyForecastType(from: list)

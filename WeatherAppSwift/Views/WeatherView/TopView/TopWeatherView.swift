@@ -8,23 +8,23 @@
 import SwiftUI
 
 struct TopWeatherView: View {
-    @StateObject var vm: WeatherVM = WeatherVM()
+    @ObservedObject var weatherVM: WeatherVM
     
     var body: some View {
         HStack(spacing: 30) {
             VStack {
-                weatherIconView(icon: vm.icon, tint: vm.tint)
+                weatherIconView(icon: weatherVM.icon, tint: weatherVM.tint)
             }
 //            .border(.gray)
             VStack {
                 weatherInfoView
                 temperatureView
                 weatherDescriptionView
-                temperatureRangeView(low: vm.low, high: vm.high)
+                temperatureRangeView(low: weatherVM.low, high: weatherVM.high)
             }
         }
         .padding()
-        .background(vm.tint.opacity(0.1))
+        .background(weatherVM.tint.opacity(0.1))
         .cornerRadius(10)
         .frame(maxWidth: .infinity)
     }
@@ -41,19 +41,19 @@ struct TopWeatherView: View {
     }
     
     private var weatherInfoView: some View {
-        Text(vm.weather.name)
+        Text(weatherVM.weather.name)
             .font(.headline)
             .padding(.bottom, 4)
     }
     
     private var temperatureView: some View {
-        Text("\(Int(vm.weather.main.temp))°")
+        Text("\(Int(weatherVM.weather.main.temp))°")
             .font(.largeTitle)
             .fontWeight(.bold)
     }
     
     private var weatherDescriptionView: some View {
-        Text(vm.weather.weather.first?.description ?? "")
+        Text(weatherVM.weather.weather.first?.description ?? "")
             .font(.subheadline)
             .padding(.bottom, 4)
     }
@@ -70,5 +70,5 @@ struct TopWeatherView: View {
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    TopWeatherView()
+    TopWeatherView(weatherVM: WeatherVM())
 }
