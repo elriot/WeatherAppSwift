@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct WeatherView: View {
-    @StateObject var vm: WeatherVM = WeatherVM()
+    @ObservedObject var weatherVM: WeatherVM
+    
     var body: some View {
         VStack(spacing: 20) {
-            TopWeatherView(vm: vm) // for nexttime
+            TopWeatherView(weatherVM: weatherVM) // for nexttime
             DailyWeatherView()
             WeeklyForecastView()
         }
@@ -19,5 +20,5 @@ struct WeatherView: View {
 }
 
 #Preview {
-    WeatherView()
+    WeatherView(weatherVM: WeatherVM())
 }

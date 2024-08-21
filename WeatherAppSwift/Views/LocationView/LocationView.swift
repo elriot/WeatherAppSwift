@@ -11,30 +11,34 @@ struct LocationView: View {
     @State var text: String = ""
     @State private var timer: Timer?
     
-    @StateObject var lm: LocationVM = LocationVM()
+    @ObservedObject var locationVM: LocationVM
     
     var body: some View {
-        VStack(spacing: 2) {
+        VStack {
             LocationTextField(title: "Weather", placeholder: "Search for a city or airport", text: $text)
                 .onChange(of: text) {
                     startTimer()
                 }
-            LocationListView(locations: lm.locations)
+//            Divider()
+//            if(lm.locations.count > 0){
+                LocationListView(locations: locationVM.locations, locationVM: locationVM)
+//                Divider()
+//            }
             Spacer()
         }
     }
     
     func startTimer() {
-        print("start timer")
+//        print("start timer")
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
             print("here")
-            self.lm.update(text: self.text)
+            locationVM.update(text: self.text)
             self.timer?.invalidate() 
         }
     }
 }
 
 #Preview {
-    LocationView()
+    LocationView(locationVM: LocationVM(weatherVM: WeatherVM()))
 }

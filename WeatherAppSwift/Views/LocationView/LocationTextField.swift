@@ -19,7 +19,7 @@ struct LocationTextField: View {
                 .font(.title2)
             
             HStack {
-                Image(systemName: "person")
+                Image(systemName: "magnifyingglass")
                     .resizable()
                     .scaledToFit()
                     .frame(height: 15)

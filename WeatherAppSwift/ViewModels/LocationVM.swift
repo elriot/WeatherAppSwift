@@ -9,18 +9,33 @@ import Foundation
 
 final class LocationVM: ObservableObject {
     @Published var locations: [SearchLocation] = []
+    @Published var currentLocation: SearchLocation?
     
-    init(){}
+    private let weatherVM: WeatherVM
+
+    init(weatherVM: WeatherVM){
+        self.weatherVM = weatherVM
+    }
     
     func update(text: String){
-        print(#function)
         Api.shared.fetchLocation(city: text) { locations in
-            print("heerere \(text)")
             guard let locations else { return }
             DispatchQueue.main.async { [weak self] in
                 guard let self else { return }
                 self.locations = locations
-                dump("update locations: \(locations)")
+            }
+        }
+    }
+    
+    func updateLocation(searchResult: SearchLocation){
+        self.currentLocation = searchResult
+        Api.shared.fetchWeather(lat: searchResult.lat, lon: searchResult.lon) { weather, forecast in
+            guard let weather, let forecast else { return }
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+                weatherVM.setWeather(weather)
+                weatherVM.setWeeklyForecast(forecast)
+
             }
         }
     }

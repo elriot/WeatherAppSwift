@@ -8,20 +8,28 @@
 import SwiftUI
 
 struct LocationListView: View {
-//    let cities: [String] = ["Burnaby", "Alberta", "Busan", "Fukuoka", "Seoul"]
     let locations: [SearchLocation]
+    @ObservedObject var locationVM: LocationVM
+    
+    func actionTap(location: SearchLocation) {
+        locationVM.updateLocation(searchResult: location)
+    }
     
     var body: some View {
-        VStack(spacing:30) {
+        VStack{
             ForEach(0..<locations.count, id: \.self) { index in
                 let location = locations[index]
-                let name = "\(location.name) \(location.state ?? ""), \(location.country)"
-                LocationListItemView(location: name)
+                LocationListItemView(location: location) { selectedLocation in
+                    actionTap(location: selectedLocation)
+                }
+                .padding(.vertical, 0)
+//                .background(index % 2 == 0 ? .gray.opacity(0.05) : .gray.opacity(0.1))
+//                .border(.gray)
             }
         }
     }
 }
 
-//#Preview {
-//    LocationListView(locations: [])
-//}
+#Preview {
+    LocationListView(locations: [], locationVM: LocationVM(weatherVM: WeatherVM()))
+}
