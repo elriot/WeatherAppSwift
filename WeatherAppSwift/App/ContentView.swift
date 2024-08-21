@@ -24,10 +24,11 @@ struct ContentView: View {
                     Label("Weather", systemImage: "cloud.sun.fill")
                 }
             
-            LocationView(locationVM: lm)
+            LocationView()
                 .tabItem {
                     Label("Location", systemImage: "magnifyingglass")
                 }
+                .environmentObject(lm)
         }
     }
 }
