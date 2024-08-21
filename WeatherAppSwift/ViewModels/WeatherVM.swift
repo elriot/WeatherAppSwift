@@ -15,7 +15,7 @@ final class WeatherVM: ObservableObject {
     @Published var dailyForecast: [DailyForecast]? = []
     @Published var dailyForecastType: [WeatherType]? = []
     @Published var weeklyForecastList: [WeeklyForecastList]? = []
-    
+    private var manager: LocationsManager = LocationsManager.shared
     
     init() {
 //        Api.shared.fetchSample(CurrentWeather.self) { [weak self] data in
@@ -34,15 +34,25 @@ final class WeatherVM: ObservableObject {
 //        }
         // "lat": 33.5898988, "lon": 130.4017509, fukuoka
         // vancouver ->
-        // Api.shared.fetchWeather(lat: 49.2827, lon: -123.1216) { [weak self] weather,
-        Api.shared.fetchWeather(lat: 33.5898988, lon: 130.4017509) { [weak self] weather, weekly in
+        guard let selected = manager.getSelectedLocation() else { return }
+        Api.shared.fetchWeather(lat: selected.lat, lon: selected.lon) { [weak self] weather, weekly in
             guard let self = self, let weather, let weekly else { return }
             DispatchQueue.main.async {
                 self.setWeather(weather)
                 self.setWeeklyForecast(weekly)
-//                self.setDailyForecast(weekly)
             }
         }
+        
+        
+        // Api.shared.fetchWeather(lat: 49.2827, lon: -123.1216) { [weak self] weather,
+//        Api.shared.fetchWeather(lat: 33.5898988, lon: 130.4017509) { [weak self] weather, weekly in
+//            guard let self = self, let weather, let weekly else { return }
+//            DispatchQueue.main.async {
+//                self.setWeather(weather)
+//                self.setWeeklyForecast(weekly)
+////                self.setDailyForecast(weekly)
+//            }
+//        }
 //        Api.shared.fetchSample(WeeklyForecast) { [weak self] weekly in
 //            guard let self, let weekly else { return }
 //            
@@ -63,6 +73,10 @@ final class WeatherVM: ObservableObject {
         let dailyList = list.getDailyForecasts()
         dailyForecast = dailyList
         dailyForecastType = getDailyForecastType(from: list)
+    }
+    
+    func isSelectedLocationEmpty() -> Bool {
+        return manager.getSelectedLocation() == nil ? true : false
     }
     
     private func getWeatherType(from weather: CurrentWeather) -> WeatherType? {

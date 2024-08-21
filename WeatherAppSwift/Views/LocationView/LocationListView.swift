@@ -9,10 +9,17 @@ import SwiftUI
 
 struct LocationListView: View {
     let locations: [SearchLocation]
+    let clearText: () -> Void
+    
     @ObservedObject var locationVM: LocationVM
+    @Binding var selectedTab: NavPath
+    @Binding var showWeatherTab: Bool
     
     func actionTap(location: SearchLocation) {
         locationVM.updateLocation(searchResult: location)
+        selectedTab = .weather
+        clearText()
+        showWeatherTab = true
     }
     
     var body: some View {
@@ -23,13 +30,11 @@ struct LocationListView: View {
                     actionTap(location: selectedLocation)
                 }
                 .padding(.vertical, 0)
-//                .background(index % 2 == 0 ? .gray.opacity(0.05) : .gray.opacity(0.1))
-//                .border(.gray)
             }
         }
     }
 }
 
 #Preview {
-    LocationListView(locations: [], locationVM: LocationVM(weatherVM: WeatherVM()))
+    LocationListView(locations: [], clearText: { print("test")}, locationVM: LocationVM(weatherVM: WeatherVM()), selectedTab: .constant(NavPath.search), showWeatherTab: .constant(false))
 }

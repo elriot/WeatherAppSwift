@@ -10,8 +10,14 @@ import SwiftUI
 struct LocationView: View {
     @State var text: String = ""
     @State private var timer: Timer?
+    @Binding var selectedTab: NavPath
+    @Binding var showWeatherTab: Bool
     
     @EnvironmentObject var locationVM: LocationVM
+    
+    func clearText() {
+        text = ""
+    }
     
     var body: some View {
         VStack {
@@ -19,26 +25,34 @@ struct LocationView: View {
                 .onChange(of: text) {
                     startTimer()
                 }
-//            Divider()
-//            if(lm.locations.count > 0){
-                LocationListView(locations: locationVM.locations, locationVM: locationVM)
-//                Divider()
-//            }
+            LocationListView(locations: locationVM.locations, clearText: clearText, locationVM: locationVM, selectedTab: $selectedTab, showWeatherTab: $showWeatherTab)
             Spacer()
+            
+            if (locationVM.locations.count > 0) {
+                Button {
+                    locationVM.clearSavedLocations()
+                    locationVM.clearSavedSelectedLocations()
+                } label: {
+                    Image(systemName: "trash.fill")
+                    Text("Clear")
+                }
+                .foregroundColor(.indigo)
+            }
         }
     }
     
     func startTimer() {
-//        print("start timer")
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
             locationVM.update(text: self.text)
             self.timer?.invalidate() 
         }
     }
+    
+
 }
 
 #Preview {
-    LocationView()
+    LocationView(selectedTab: .constant(NavPath.search), showWeatherTab: .constant(false))
         .environmentObject(LocationVM(weatherVM: WeatherVM()))
 }

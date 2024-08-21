@@ -10,7 +10,9 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var vm: WeatherVM
     @StateObject var lm: LocationVM
-    
+    @State private var selectedTab: NavPath = .weather
+    @State private var showWeatherTab = true
+    private var manager: LocationsManager = LocationsManager.shared
     init() {
         let weatherVM = WeatherVM()
         _vm = StateObject(wrappedValue: weatherVM)
@@ -18,18 +20,30 @@ struct ContentView: View {
     }
     
     var body: some View {
-        TabView {
-            WeatherView()
-                .tabItem {
-                    Label("Weather", systemImage: "cloud.sun.fill")
-                }
-                .environmentObject(vm)
+        TabView(selection: $selectedTab) {
+            if showWeatherTab {
+                WeatherView()
+                    .tabItem {
+                        Label("Weather", systemImage: "cloud.sun.fill")
+                    }
+                    .environmentObject(vm)
+                    .tag(NavPath.weather)
+            }
             
-            LocationView()
+            LocationView(selectedTab: $selectedTab, showWeatherTab: $showWeatherTab)
                 .tabItem {
                     Label("Location", systemImage: "magnifyingglass")
                 }
                 .environmentObject(lm)
+                .tag(NavPath.search)
+        }
+        .onAppear {
+            if manager.getSelectedLocation() == nil {
+                showWeatherTab = false
+            } else {
+                selectedTab = .search
+                showWeatherTab = true
+            }
         }
     }
 }
