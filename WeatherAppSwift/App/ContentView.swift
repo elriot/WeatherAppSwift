@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var vm: WeatherVM
     @StateObject var lm: LocationVM
+    @State private var path: [NavPath] = [] 
     
     init() {
         let weatherVM = WeatherVM()
@@ -18,18 +19,28 @@ struct ContentView: View {
     }
     
     var body: some View {
-        TabView {
-            WeatherView()
-                .tabItem {
-                    Label("Weather", systemImage: "cloud.sun.fill")
+        NavigationStack(path: $path){
+            TabView {
+                WeatherView()
+                    .tabItem {
+                        Label("Weather", systemImage: "cloud.sun.fill")
+                    }
+                    .environmentObject(vm)
+                
+                LocationView()
+                    .tabItem {
+                        Label("Location", systemImage: "magnifyingglass")
+                    }
+                    .environmentObject(lm)
+            }
+            .navigationDestination(for: NavPath.self) { path in
+                switch path {
+                case .weather:
+                    WeatherView()
+                case .search:
+                    LocationView()
                 }
-                .environmentObject(vm)
-            
-            LocationView()
-                .tabItem {
-                    Label("Location", systemImage: "magnifyingglass")
-                }
-                .environmentObject(lm)
+            }
         }
     }
 }
