@@ -31,7 +31,7 @@ struct CarouselRow: View {
     }
 }
 struct DailyCarouselRow: View {
-    @ObservedObject var weatherVM: WeatherVM
+    @EnvironmentObject var weatherVM: WeatherVM
     var body: some View {
         if let weekly = weatherVM.weeklyForecast, let weeklyList = weatherVM.weeklyForecastList, let types = weatherVM.dailyForecastType {
             CarouselRow(weekly: weekly, items:weeklyList, types: types)
@@ -42,5 +42,6 @@ struct DailyCarouselRow: View {
 }
 
 #Preview {
-    DailyCarouselRow(weatherVM: WeatherVM())
+    DailyCarouselRow()
+        .environmentObject(WeatherVM())
 }

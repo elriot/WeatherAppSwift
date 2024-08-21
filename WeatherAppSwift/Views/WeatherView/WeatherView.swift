@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct WeatherView: View {
-    @ObservedObject var weatherVM: WeatherVM
+    @EnvironmentObject var weatherVM: WeatherVM
     
     var body: some View {
         VStack(spacing: 20) {
-            TopWeatherView(weatherVM: weatherVM) // for nexttime
-            DailyWeatherView(weatherVM: weatherVM)
-            WeeklyForecastView(weatherVM: weatherVM)
+            TopWeatherView() // for nexttime
+            DailyWeatherView()
+            WeeklyForecastView()
         }
     }
 }
 
 #Preview {
-    WeatherView(weatherVM: WeatherVM())
+    WeatherView()
+        .environmentObject(WeatherVM())
 }
