@@ -40,8 +40,9 @@ struct ContentView: View {
         .onAppear {
             if manager.getSelectedLocation() == nil {
                 showWeatherTab = false
-            } else {
                 selectedTab = .search
+            } else {
+                selectedTab = .weather
                 showWeatherTab = true
             }
         }
