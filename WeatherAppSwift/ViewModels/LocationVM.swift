@@ -54,4 +54,9 @@ final class LocationVM: ObservableObject {
         manager.clearSavedSelectedLocations()
         currentLocation = nil
     }
+    
+    func deleteLocation(location: SearchLocation){
+        manager.delete(location)
+        self.locations = manager.getLocations()
+    }
 }
