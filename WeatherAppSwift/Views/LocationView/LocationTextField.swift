@@ -39,6 +39,7 @@ struct LocationTextField: View {
                     }
                     .onSubmit {
                         UIApplication.shared.inputView?.endEditing(true)
+                        locationVM.update(text: text)
                     }
                 
                 if buttonVisible {
