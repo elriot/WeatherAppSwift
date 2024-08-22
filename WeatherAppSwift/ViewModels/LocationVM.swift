@@ -57,6 +57,10 @@ final class LocationVM: ObservableObject {
     
     func deleteLocation(location: SearchLocation){
         manager.delete(location)
+        loadSavedLocations()
+    }
+    
+    func loadSavedLocations(){
         self.locations = manager.getLocations()
     }
 }
