@@ -23,7 +23,7 @@ struct LocationListView: View {
     }
     
     var body: some View {
-        VStack{
+        List {
             ForEach(0..<locations.count, id: \.self) { index in
                 let location = locations[index]
                 LocationListItemView(location: location) { selectedLocation in
@@ -31,6 +31,12 @@ struct LocationListView: View {
                 }
                 .padding(.vertical, 0)
             }
+            .onDelete(perform: { indexSet in
+                for i in indexSet {
+                    locationVM.deleteLocation(location: locations[i])
+                }
+//                print("delete \(indexSet)")
+            })
         }
     }
 }
