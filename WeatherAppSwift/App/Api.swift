@@ -260,8 +260,8 @@ extension [WeeklyForecastList] {
             if dailyForecasts.last?.day == dt {
                 let j = dailyForecasts.count - 1
                 dailyForecasts[j].lows.append(low)
+//                dailyForecasts[j].highs.append(high + Double.random(in: 5...10))
                 dailyForecasts[j].highs.append(high)
-//                dailyForecasts[j].highs.append(high)
             } else {
                 let newDay = parse(using: item)
                 dailyForecasts.append(newDay)

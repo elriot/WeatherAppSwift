@@ -14,11 +14,34 @@ struct LocationTextField: View {
     @Binding var text: String
     @State var buttonVisible: Bool = false
     @EnvironmentObject var locationVM: LocationVM
+    @State var deleteListAlert: Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(title)
-                .font(.title2)
+            HStack {
+                Text(title)
+                    .font(.title2)
+                
+                Spacer()
+                
+                // Easter egg - delete List Button
+                Button {
+                    deleteListAlert = true
+//                    locationVM.clearSavedLocations()
+//                    locationVM.clearSavedSelectedLocations()
+                } label: {
+                    Image(systemName: "trash.fill")
+                }
+                .foregroundColor(.white)
+            }
+            .alert("Do you want to delete all locations?", isPresented: $deleteListAlert) {
+                Button("Delete", role: .destructive) {
+                    locationVM.clearSavedLocations()
+                    locationVM.clearSavedSelectedLocations()
+                }
+                Button("Cancel", role: .cancel){}
+            }
+
             
             HStack {
                 Image(systemName: "magnifyingglass")
@@ -36,6 +59,10 @@ struct LocationTextField: View {
                         } else {
                             buttonVisible = false
                         }
+//                        if newValue == "CL" {
+//                            locationVM.clearSavedLocations()
+//                            locationVM.clearSavedSelectedLocations()
+//                        }
                     }
                     .onSubmit {
                         UIApplication.shared.inputView?.endEditing(true)

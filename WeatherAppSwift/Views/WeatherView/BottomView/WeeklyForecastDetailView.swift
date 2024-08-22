@@ -12,7 +12,6 @@ struct WeeklyForecastDetailView: View {
     let low: Double
     let high: Double
     let average: Double
-    @State var value: Double
     let icon: Image
     let week: String
 
@@ -20,7 +19,6 @@ struct WeeklyForecastDetailView: View {
         self.low = low
         self.high = high
         self.average = average
-        _value = State(initialValue: average)  // Initialize the slider
         self.icon = icon
         self.week = week
     }
@@ -30,17 +28,14 @@ struct WeeklyForecastDetailView: View {
             Text(week)
                 .lineLimit(1)
                 .frame(width: 60, alignment: .leading)
-//                .border(.gray)
             
             icon
                 .frame(width: 30, alignment: .leading)
-//                .border(.gray)
             
             HStack(spacing: 10){
                 Text("\(Int(low))°")
                     .foregroundStyle(.secondary)
-//                Slider(value: $value, in: Double(low)...Double(high))
-                CustomSlider(value: $value, range: low...high)
+                CustomSlider(value: average, range: low...high)
                     .frame(height: 40, alignment: .center)
                 Text("\(Int(high))°")
             }
