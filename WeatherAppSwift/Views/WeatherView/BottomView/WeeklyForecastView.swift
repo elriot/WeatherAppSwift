@@ -20,10 +20,15 @@ struct ForecastRow: View {
                 let average = forecast.average
                 let icon = type.icon ?? Image(systemName: "cloud.fill")
                 let week = index == 0 ? "Today" : forecast.day
-                WeeklyForecastDetailView(low: low, high: high, average: average, icon: icon, week: week)
+                WeeklyForecastDetailView(low: low, high: high, average: average, icon: icon, week: week )
             }
+//            .onAppear {
+//                for item in items {
+//                    print("\(Int(item.lows.average())) \(Int(item.highs.average())) \(Int(item.average))")
+//                }                
+//            }
         }
-        .background(.gray.opacity(0.1))
+        .background(.basicBackground)
     }
 }
 
@@ -36,6 +41,7 @@ struct WeeklyForecastView: View {
         } else {
             Text("Loading...")
         }
+ 
     }
 
 }

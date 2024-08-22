@@ -27,17 +27,8 @@ struct LocationView: View {
                 }
             LocationListView(locations: locationVM.locations, clearText: clearText, locationVM: locationVM, selectedTab: $selectedTab, showWeatherTab: $showWeatherTab)
             Spacer()
-            
-            if (locationVM.locations.count > 0) {
-                Button {
-                    locationVM.clearSavedLocations()
-                    locationVM.clearSavedSelectedLocations()
-                } label: {
-                    Image(systemName: "trash.fill")
-                    Text("Clear")
-                }
-                .foregroundColor(.indigo)
-            }
+  
+            //delete list button
         }
     }
     

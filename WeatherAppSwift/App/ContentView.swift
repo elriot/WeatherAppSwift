@@ -28,6 +28,7 @@ struct ContentView: View {
                     }
                     .environmentObject(vm)
                     .tag(NavPath.weather)
+                    .background(.baseBackground)
             }
             
             LocationView(selectedTab: $selectedTab, showWeatherTab: $showWeatherTab)
@@ -37,6 +38,7 @@ struct ContentView: View {
                 .environmentObject(lm)
                 .tag(NavPath.search)
         }
+        
         .onAppear {
             if manager.getSelectedLocation() == nil {
                 showWeatherTab = false
