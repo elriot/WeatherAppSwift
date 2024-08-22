@@ -27,9 +27,8 @@ struct LocationTextField: View {
                     .frame(height: 15)
                 
                 
-                TextField(placeholder, text: $text, axis: .vertical)
+                TextField(placeholder, text: $text)
                     .submitLabel(.done)
-                    .keyboardType(.emailAddress)
                     .background(.clear)
                     .onChange(of: text) { oldValue, newValue in
                         if newValue.count > 0 {
@@ -37,7 +36,9 @@ struct LocationTextField: View {
                         } else {
                             buttonVisible = false
                         }
-                            
+                    }
+                    .onSubmit {
+                        UIApplication.shared.inputView?.endEditing(true)
                     }
                 
                 if buttonVisible {
