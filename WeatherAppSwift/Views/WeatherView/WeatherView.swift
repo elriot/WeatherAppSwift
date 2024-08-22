@@ -12,10 +12,14 @@ struct WeatherView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            TopWeatherView() 
+            TopWeatherView()
+                .cornerRadius(10)
             DailyWeatherView()
+                .cornerRadius(10)
             WeeklyForecastView()
+                .cornerRadius(10)
         }
+        .padding()
     }
 }
 

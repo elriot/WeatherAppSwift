@@ -23,7 +23,7 @@ struct ForecastRow: View {
                 WeeklyForecastDetailView(low: low, high: high, average: average, icon: icon, week: week)
             }
         }
-        .background(.gray.opacity(0.1))
+        .background(.basicBackground)
     }
 }
 

@@ -25,9 +25,8 @@ struct TopWeatherView: View {
                 }
             }
             .padding()
-            .background(weatherVM.tint.opacity(0.1))
-            .cornerRadius(10)
-            .frame(maxWidth: .infinity)
+            .background(.basicBackground)
+//            .frame(maxWidth: .infinity)
         }
     }
         

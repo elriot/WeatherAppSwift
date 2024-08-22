@@ -27,7 +27,7 @@ struct CarouselRow: View {
             .padding(.horizontal, 20)
         }
         .frame(height: 150)
-        .background(.gray.opacity(0.09))
+        .background(.basicBackground)
     }
 }
 struct DailyCarouselRow: View {
